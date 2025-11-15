@@ -1,0 +1,567 @@
+/* RESET CSS */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* VARIABLES */
+:root {
+    --dark-color: rgb(2, 4, 8);
+    --dark-hover: rgba(255, 255, 255, 0.1);
+
+    --light-color: rgb(245, 245, 245);
+    --light-hover: rgba(0, 0, 0, 0.1);
+}
+
+/* GENERAL */
+body {
+    width: 100%;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: monospace, sans-serif;
+    font-size: 0.5rem;
+    transition: background-color 0.3s;
+    background-image: url(./assets/bg.jpg);
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+
+}
+
+
+body.dark-mode {
+    color: var(--light-color);
+    background-color: var(--dark-color);
+}
+
+body.dark-mode #toggle-mode-btn:hover {
+    background-color: var(--dark-hover);
+}
+
+a {
+    text-decoration: none;
+    color: var(--dark-color);
+}
+
+input {
+    display: none;
+}
+
+/* MAIN */
+#toggle-mode-btn {
+    width: 2rem;
+    height: 2rem;
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: transparent;
+    transition: background-color 0.3s;
+    cursor: pointer;
+}
+
+#portfolio-link {
+    padding-right: 0.5rem;
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    font-size: 0.75rem;
+}
+
+#github-link {
+    position: fixed;
+    bottom: 1rem;
+    left: 1rem;
+}
+
+/* RESPONSIVE WARNING */
+#responsive-warning {
+    width: 100%;
+    height: 100%;
+    padding: 2rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    font-size: 1rem;
+    text-align: center;
+    z-index: 9999;
+}
+
+.warning-icons {
+    font-size: 10rem;
+}
+
+@media (max-width: 768px) {
+    #responsive-warning.show {
+        display: flex;
+    }
+}
+
+/* FLIP BOOK */
+#flip_book {
+    width: 496px;
+    height: 640px;
+    position: relative;
+    transition-duration: 1s;
+    perspective: 2000px;
+}
+
+.front_cover,
+.back_cover {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2.5px 5px 5px 2.5px;
+    background-image: url(./assets/images/flip_book_edge_shading.webp);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #2a1a12;
+    box-shadow: 0 0 5px 0 rgb(25, 25, 25, 0.25);
+}
+
+.front_cover {
+    position: absolute;
+    cursor: pointer;
+    transform-origin: center left;
+    transition: transform 0.5s;
+    z-index: 99;
+}
+
+.front_cover label {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    cursor: pointer;
+}
+
+.page {
+    width: 486px;
+    height: 620px;
+    position: absolute;
+    top: 10px;
+    left: 1px;
+    border-radius: 0 5px 5px 0;
+    background-color: white;
+    transform-origin: left;
+    transform-style: preserve-3d;
+    transform: rotateY(0deg);
+    transition-duration: 0.5s;
+}
+
+.front_page {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+}
+
+.front_page label {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    cursor: pointer;
+    z-index: 100;
+}
+
+.back_page {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
+    z-index: 100;
+}
+
+.back_page label {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    cursor: pointer;
+    z-index: 100;
+}
+
+.edge_shading {
+    width: 486px;
+    height: 620px;
+    position: absolute;
+    z-index: 98;
+}
+
+.front_content {
+    width: 484px;
+    height: 618px;
+    position: absolute;
+    top: 1px;
+    border-radius: 0 5px 5px 0;
+    z-index: 97;
+}
+
+.back_content {
+    width: 484px;
+    height: 618px;
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    border-radius: 5px 0 0 5px;
+    z-index: 97;
+}
+
+.back_cover {
+    position: relative;
+    z-index: -1;
+}
+
+#page1 {
+    z-index: 8;
+}
+
+#page2 {
+    z-index: 5;
+}
+
+#page3 {
+    z-index: 4;
+}
+
+#page4 {
+    z-index: 3;
+}
+
+#page5 {
+    z-index: 2;
+}
+
+#cover_checkbox:checked~#flip_book {
+    transform: translateX(230px)
+}
+
+#cover_checkbox:checked~#flip_book .front_cover {
+    transform: rotateY(-180deg);
+    transition: transform 1.5s, z-index 0.5s 0.5s;
+    z-index: 1;
+}
+
+#cover_checkbox:checked~#flip_book #cover {
+    width: 80%;
+    height: 80%;
+    position: absolute;
+}
+
+#page1_checkbox:checked~#flip_book #page1 {
+    transform: rotateY(-180deg);
+    z-index: 3;
+}
+
+#page2_checkbox:checked~#flip_book #page2 {
+    transform: rotateY(-180deg);
+    z-index: 4;
+}
+
+#page3_checkbox:checked~#flip_book #page3 {
+    transform: rotateY(-180deg);
+    z-index: 5;
+}
+
+#page4_checkbox:checked~#flip_book #page4 {
+    transform: rotateY(-180deg);
+    z-index: 6;
+}
+
+#page5_checkbox:checked~#flip_book #page5 {
+    transform: rotateY(-180deg);
+    z-index: 9;
+}
+
+/* Styling for the new cover instruction text */
+.cover-instruction {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    text-align: center;
+    color: white; /* Choose a color that contrasts with your cover image */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+    z-index: 101; /* Must be higher than the label (z-index: 100) to be clickable */
+    pointer-events: none; /* Allows clicks to pass through to the label */
+}
+
+.cover-instruction h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.cover-instruction p {
+    font-size: 1.2rem;
+    display: none; /* Hide the text by default */
+}
+/* ================================================= */
+/* BACK COVER BUTTON STYLES */
+/* ================================================= */
+
+.back-cover-buttons {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    text-align: center; 
+    color: #966f2c;
+    border-radius: 5px;
+}
+
+.back-cover-buttons h2 {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+/* ================================================= */
+/* RESUME BUTTON STYLES (Tertiary Action) */
+/* ================================================= */
+
+.back-cover-btn.resume-button {
+    /* Use 'transparent' background with a visible border */
+    background-color: transparent; 
+    color: #4CAF50; /* Use your primary action color for visibility */
+    border: 2px solid #4CAF50; 
+    
+    /* Add space above the button to separate it from the icons */
+    margin-top: 10px; 
+}
+
+.back-cover-btn.resume-button:hover {
+    /* Subtle hover effect */
+    background-color: rgba(76, 175, 80, 0.1);
+    border-color: #45a049;
+    color: #45a049;
+}
+
+/* Ensure the icon has some spacing */
+.back-cover-btn.resume-button i {
+    margin-left: 8px;
+}
+.back-cover-btn {
+    display: block;
+    width: 80%;
+    max-width: 300px;
+    font-size: 1rem;
+    padding: 15px 25px;
+    margin: 10px 0;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.back-cover-btn:hover {
+    transform: translateY(-2px);
+}
+
+.back-cover-btn.primary {
+    background-color: #d4b758; /* Primary green color */
+    color: white;
+}
+
+.back-cover-btn.primary:hover {
+    background-color: #55513a;
+}
+
+.back-cover-btn.secondary {
+    background-color: #555; /* Secondary grey color */
+    color: white;
+    border: 1px solid #777;
+}
+/* ================================================= */
+/* BACK COVER SOCIAL ICONS STYLES */
+/* ================================================= */
+
+/* Container for the new icons */
+.back-cover-social-links {
+    display: flex;
+    justify-content: center;
+    gap: 25px; /* Spacing between icons */
+    margin-top: 5px;
+}
+
+/* Individual icon link styling */
+.back-cover-social-links .social-link {
+    font-size: 2rem; /* Large icon size */
+    color: var(--light-color); 
+    transition: color 0.3s, transform 0.3s;
+}
+
+.back-cover-social-links .social-link:hover {
+    color: #55513a; /* Highlight color (e.g., green from your theme) */
+    transform: translateY(-4px); /* Slight lift effect on hover */
+}
+.back-cover-btn.secondary:hover {
+    background-color: #666;
+}
+@media (max-width: 768px) {
+    
+    /* ... existing mobile styles ... */
+
+    /* Adjust padding and button size for mobile back cover */
+    
+    .back-cover-buttons h2 {
+        font-size: 3vw; /* Scale title size */
+    }
+    
+    .back-cover-btn {
+        width: 90%; /* Make buttons slightly wider on smaller screens */
+        padding: 6px 6px;
+        font-size: 2vw; /* Scale font size */
+    }
+    .back-cover-social-links {
+        display: flex;
+        justify-content: center;
+        gap: 15px; /* Spacing between icons */
+        margin-top: 15px;
+    }
+    .back-cover-social-links .social-link {
+        font-size: 1.5rem; /* Large icon size */
+        color: var(--light-color); 
+        transition: color 0.3s, transform 0.3s;
+    }
+}
+
+/* Optional: Mobile styling adjustments for the text */
+@media (max-width: 768px) {
+
+    .cover-instruction p {
+        display: block !important; /* Force the text to be visible on mobile */
+    }
+
+    /* ... existing mobile styles for .cover-instruction h1, p, etc. ... */
+    .cover-instruction h1 {
+        font-size: 8vw; 
+    }
+    .cover-instruction p {
+        font-size: 4vw;
+        /* You can now remove 'display: block !important;' if you set it above, but keeping it 
+           here is fine if you prefer to keep all mobile styles together. */
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        width: 100%;
+        height: 100dvh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-family: monospace, sans-serif;
+        font-size: 0.5rem;
+        transition: background-color 0.3s;
+        background-image: url(./assets/bg.jpg);
+        background-position: center; /* Center the image */
+        background-repeat: no-repeat; /* Do not repeat the image */
+        background-size: cover; /* Resize the background image to cover the entire container */
+    
+    }
+
+    main {
+        width: 200vw; /* Make main container wider */
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        left: 0;
+        transition: left 0.3s ease;
+    }
+
+    #flip_book {
+        width: 100vw;
+        height: 130vw;
+        max-width: 330px;
+        max-height: 520px;
+        transform: translateX(0);
+        transition: transform 0.5s ease;
+    }
+
+    .front_cover,
+    .back_cover {
+        background-size: cover;
+    }
+
+    .page {
+        width: 98vw;
+        height: 128vw;
+        max-width: 320px;
+        max-height: 510px;
+        left: 0;
+        top: 0;
+    }
+
+    .front_content,
+    .back_content,
+    .edge_shading {
+        width: 98vw;
+        height: 138vw;
+        max-width: 320px;
+        max-height: 510px;
+    }
+
+    /* Increase mobile controls bottom spacing */
+    #mobile-controls {
+        bottom: 4rem;
+    }
+}
+
+/* For very small screens */
+@media (max-width: 480px) {
+    #flip_book {
+        width: 95vw;
+        height: 125vw;
+        max-width: 280px;
+        max-height: 362px;
+        background-position: center; /* Center the image */
+        background-repeat: no-repeat; /* Do not repeat the image */
+        background-size: cover; /* Resize the background image to cover the entire container */
+    }
+
+    .page {
+        width: 93vw;
+        height: 121vw;
+        max-width: 270px;
+        max-height: 342px;
+    }
+
+    .front_content,
+    .back_content,
+    .edge_shading {
+        width: 93vw;
+        height: 121vw;
+        max-width: 270px;
+        max-height: 342px;
+    }
+
+    #mobile-controls {
+        bottom: 3rem;
+        padding: 0 1rem;
+    }
+}

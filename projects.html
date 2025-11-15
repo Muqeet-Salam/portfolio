@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio Projects</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Bootstrap Icons (Matching the index.html file) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-dark': '#020408',
+                        'primary-light': '#f5f5f5',
+                        'accent': '#4CAF50',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom CSS for light/dark mode fallback and general body styling */
+        body {
+            background-color: #f5f5f5;
+            color: #020408;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Responsive Project Image Placeholder */
+        .project-image-placeholder {
+            min-height: 200px;
+            background-color: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #666;
+            font-size: 1.2rem;
+        }
+
+        /* Dark Mode Styling (Optional, based on how you handle mode) */
+        @media (prefers-color-scheme: dark) {
+            body:not(.light-mode) {
+                background-color: #020408;
+                color: #f5f5f5;
+            }
+        }
+    </style>
+</head>
+
+<body class="font-sans">
+    
+    <!-- Navbar -->
+    <nav class="bg-primary-dark shadow-lg sticky top-0 z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-accent">My Projects Showcase</h1>
+            <a href="index.html" class="text-primary-light hover:text-accent transition duration-300 flex items-center">
+                <i class="bi bi-book-fill mr-2"></i> Back to Flipbook
+            </a>
+        </div>
+    </nav>
+
+    <!-- Projects Grid Section -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-grow">
+        <header class="text-center mb-12">
+            <!-- Adjusted the size classes slightly for better mobile responsiveness using sm: prefix -->
+            <h2 class="text-4xl sm:text-5xl font-extrabold border-b-4 border-accent inline-block pb-2">
+                Featured Works
+            </h2>
+            <p class="mt-4 text-lg sm:text-xl text-gray-600 dark:text-gray-300">A collection of my most impactful personal and professional projects.</p>
+        </header>
+    
+        <!-- Project Grid (Flexbox/Grid Hybrid) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    
+            <!-- Project Card 1: Hacktoberfest Hackathon ’25 (Organizer) -->
+            <div class="project-card rounded-xl shadow-2xl overflow-hidden hover:shadow-accent/50 transition duration-500 transform hover:-translate-y-1">
+                <div class="project-image-placeholder rounded-t-xl h-48 bg-cover bg-center bg-gray-200 dark:bg-gray-700 flex items-center justify-center" style="background-image: url('./assets/hfest.jpg');">
+                    <!-- Text overlay for identification (optional, can be removed) -->
+                </div>
+                <div class="p-6">
+                    <h3 class="text-2xl font-bold mb-2">Hacktoberfest Hackathon '25 (Organizer)</h3>
+                    <p class="text-sm text-gray-500 mb-4">Chaitanya Bharathi Institute of Technology | 2025</p>
+                    <p class="mb-4">Organized and led the CBIT Hacktoberfest Hackathon, one of the largest open-source events at CBIT with over 1700 participants. Oversaw technical operations, including live website, backend database/admin site, and Discord coordination.</p>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="text-xs font-semibold inline-block py-1 px-3 uppercase rounded-full tag-discord">Discord API</span>
+                        <span class="text-xs font-semibold inline-block py-1 px-3 uppercase rounded-full tag-web">Web Ops</span>
+                        <span class="text-xs font-semibold inline-block py-1 px-3 uppercase rounded-full bg-gray-600 text-white">Event Mgmt</span>
+                    </div>
+                    <div class="mt-6 flex justify-between">
+                        <a href="https://cbit-hacktoberfest25.vercel.app/" target="_blank" class="text-accent font-semibold hover:underline flex items-center">
+                            Live Website <i class="bi bi-box-arrow-up-right ml-1"></i>
+                        </a>
+                        <a href="https://github.com/cbitosc/cbit-hacktoberfest25" target="_blank" class="text-gray-500 hover:text-primary-dark transition flex items-center">
+                            <i class="bi bi-github text-xl"></i> hacktoberfest25
+                        </a>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Project Card 2: FishCare – AI-powered Fish Classification and Health Detection -->
+            <div class="project-card rounded-xl shadow-2xl overflow-hidden hover:shadow-accent/50 transition duration-500 transform hover:-translate-y-1">
+                <div class="project-image-placeholder rounded-t-xl" style="background-image: url('https://placehold.co/600x200/505080/ffffff?text=AI+Fish+Health+Detector');">
+                    FishCare AI
+                </div>
+                <div class="p-6">
+                    <h3 class="text-2xl font-bold mb-2">FishCare - AI Fish Health Detection</h3>
+                    <p class="text-sm text-gray-500 mb-4">2025</p>
+                    <p class="mb-4">Developed ResNet-based classifier and YOLOv8 model for fish species identification and health detection using aquatic datasets. Integrated models into a mobile application for real-time monitoring.</p>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="text-xs font-semibold inline-block py-1 px-3 uppercase rounded-full tag-tf">ResNet</span>
+                        <span class="text-xs font-semibold inline-block py-1 px-3 uppercase rounded-full tag-tf">YOLOv8</span>
+                        <span class="text-xs font-semibold inline-block py-1 px-3 uppercase rounded-full tag-python">Python</span>
+                        <span class="text-xs font-semibold inline-block py-1 px-3 uppercase rounded-full tag-ai">TensorFlow</span>
+                    </div>
+                    <div class="mt-6 flex justify-between">
+                        <a href="https://github.com/Shariqzain/FishCare" target="_blank" class="text-gray-500 hover:text-primary-dark transition flex items-center">
+                            <i class="bi bi-github text-xl"></i> GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Project Card 3: Discord Bots Suite -->
+            <div class="project-card rounded-xl shadow-2xl overflow-hidden hover:shadow-accent/50 transition duration-500 transform hover:-translate-y-1">
+                <div class="project-image-placeholder rounded-t-xl h-48 bg-cover bg-center bg-gray-200 dark:bg-gray-700 flex items-center justify-center" style="background-image: url('./assets/disc.webp');">
+                    <!-- Text overlay for identification (optional, can be removed) -->
+                </div>
+                <div class="p-6">
+                    <h3 class="text-2xl font-bold mb-2">Discord Bots Suite</h3>
+                    <p class="text-sm text-gray-500 mb-4">2024-2025</p>
+                    <p class="mb-4">Developed and hosted multiple Discord bots, including a Jujutsu Kaisen-inspired battle game, a Server Insights Bot for data visualization, and a Utility Bot for team management tools.</p>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="text-xs font-semibold inline-block py-1 px-3 uppercase rounded-full tag-discord">Discord API</span>
+                        <span class="text-xs font-semibold inline-block py-1 px-3 uppercase rounded-full tag-python">Python</span>
+                        <span class="text-xs font-semibold inline-block py-1 px-3 uppercase rounded-full bg-orange-600 text-white">FastAPI</span>
+                    </div>
+                    <div class="mt-6 flex justify-between">
+                        <a href="https://github.com/Muqeet-Salam/coscbot" target="_blank" class="text-gray-500 hover:text-primary-dark transition flex items-center">
+                            <i class="bi bi-github text-xl"></i> Coscbot
+                        </a>
+                        <a href="https://github.com/Muqeet-Salam/discordbot" target="_blank" class="text-gray-500 hover:text-primary-dark transition flex items-center">
+                            <i class="bi bi-github text-xl"></i> Utility Bot
+                        </a>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Project Card 4: VolunMatch -->
+            <div class="project-card rounded-xl shadow-2xl overflow-hidden hover:shadow-accent/50 transition duration-500 transform hover:-translate-y-1">
+                <div class="project-image-placeholder rounded-t-xl h-48 bg-cover bg-center bg-gray-200 dark:bg-gray-700 flex items-center justify-center" style="background-image: url('./assets/vol.jpg');">
+                    <!-- Text overlay for identification (optional, can be removed) -->
+                </div>
+                <div class="p-6">
+                    <h3 class="text-2xl font-bold mb-2">VolunMatch</h3>
+                    <p class="text-sm text-gray-500 mb-4">2024</p>
+                    <p class="mb-4">An AI-powered volunteer engagement platform connecting organizations and volunteers. Implemented rewards tracking, profile integration with backend APIs, and volunteer leaderboards.</p>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="text-xs font-semibold inline-block py-1 px-3 uppercase rounded-full tag-react">React</span>
+                        <span class="text-xs font-semibold inline-block py-1 px-3 uppercase rounded-full tag-django">Django</span>
+                        <span class="text-xs font-semibold inline-block py-1 px-3 uppercase rounded-full bg-sky-500 text-white">Vercel</span>
+                    </div>
+                    <div class="mt-6 flex justify-between">
+                        <a href="https://volunmatch-nine.vercel.app" target="_blank" class="text-accent font-semibold hover:underline flex items-center">
+                            Live Demo <i class="bi bi-box-arrow-up-right ml-1"></i>
+                        </a>
+                        <span class="text-gray-400 font-semibold flex items-center">
+                            GitHub Private
+                        </span>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Project Card 5: Discord Chat Insights -->
+            <div class="project-card rounded-xl shadow-2xl overflow-hidden hover:shadow-accent/50 transition duration-500 transform hover:-translate-y-1">
+                <div class="project-image-placeholder rounded-t-xl h-48 bg-cover bg-center bg-gray-200 dark:bg-gray-700 flex items-center justify-center" style="background-image: url('./assets/data.webp');">
+                    <!-- Text overlay for identification (optional, can be removed) -->
+                </div>
+                <div class="p-6">
+                    <h3 class="text-2xl font-bold mb-2">Discord Chat Insights</h3>
+                    <p class="text-sm text-gray-500 mb-4">2024</p>
+                    <p class="mb-4">Built tools to analyze over 60,000+ Discord messages for sentiment trends, keyword frequencies, and chat mood timelines. Created interactive dashboards for personalized data insights.</p>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="text-xs font-semibold inline-block py-1 px-3 uppercase rounded-full tag-python">Python</span>
+                        <span class="text-xs font-semibold inline-block py-1 px-3 uppercase rounded-full tag-data">Plotly</span>
+                        <span class="text-xs font-semibold inline-block py-1 px-3 uppercase rounded-full tag-data">Matplotlib</span>
+                    </div>
+                    <div class="mt-6 flex justify-between">
+                        <span class="text-gray-400 font-semibold flex items-center">
+                            Private Project
+                        </span>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Project Card 6: AniList Data Explorer -->
+            <div class="project-card rounded-xl shadow-2xl overflow-hidden hover:shadow-accent/50 transition duration-500 transform hover:-translate-y-1">
+                <div class="project-image-placeholder rounded-t-xl h-48 bg-cover bg-center bg-gray-200 dark:bg-gray-700 flex items-center justify-center" style="background-image: url('./assets/al.webp');">
+                    <!-- Text overlay for identification (optional, can be removed) -->
+                </div>
+                <div class="p-6">
+                    <h3 class="text-2xl font-bold mb-2">AniList Data Explorer</h3>
+                    <p class="text-sm text-gray-500 mb-4">2024</p>
+                    <p class="mb-4">Developed a data visualization platform that explores user preferences using the AniList API. Focused on interactive, data-driven insights and a user-friendly UI.</p>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="text-xs font-semibold inline-block py-1 px-3 uppercase rounded-full tag-react">React</span>
+                        <span class="text-xs font-semibold inline-block py-1 px-3 uppercase rounded-full bg-teal-500 text-white">Tailwind CSS</span>
+                        <span class="text-xs font-semibold inline-block py-1 px-3 uppercase rounded-full bg-pink-500 text-white">AniList API</span>
+                    </div>
+                    <div class="mt-6 flex justify-between">
+                        <a href="https://nawbcore.vercel.app/apis" target="_blank" class="text-accent font-semibold hover:underline flex items-center">
+                            Live Demo <i class="bi bi-box-arrow-up-right ml-1"></i>
+                        </a>
+                        <span class="text-gray-400 font-semibold flex items-center">
+                            GitHub Private
+                        </span>
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary-dark text-primary-light p-6 text-center mt-auto">
+        <p>&copy; 2025 Muqeet Salam. Built with curiosity and code.</p>
+    </footer>
+</body>
+</html>
